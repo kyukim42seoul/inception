@@ -6,6 +6,8 @@ RUN	apt-get	install -y mariadb-server
 RUN apt-get	install -y mariadb-client
 RUN	apt-get install -y php-mysql
 COPY entrypoint.sh /entrypoint.sh
+COPY conf/db.sql /db.sql
 RUN chmod +x /entrypoint.sh
+RUN mkdir data
 
 ENTRYPOINT [ "/entrypoint.sh" ]

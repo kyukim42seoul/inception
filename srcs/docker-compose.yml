@@ -5,13 +5,42 @@ services:
     image: nginx:v1.0
     ports:
       - "80:80"
+      - "443:443"
     build:
       context: ./requirements/nginx
+    volumes:
+      - ./requirements/wordpress/WordPress:/WordPress
+    networks:
+      - Br1
+
   mariadb:
     image: mariadb:v1.0
     build:
       context: ./requirements/mariadb
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./requirements/mariadb/data:/data
+#    env_file:
+#      - mariadb.env
+    networks:
+      - Br1
+
   wordpress:
+    depends_on:
+      - mariadb
     image: wordpress:v1.0
     build:
       context: ./requirements/wordpress
+    ports:
+      - "9000:9000"
+#    env_file:
+#      - wordpress.env
+    volumes:
+      - ./requirements/wordpress/WordPress:/WordPress
+    networks:
+      - Br1
+
+networks:
+  Br1:
+    driver: bridge
