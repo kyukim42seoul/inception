@@ -3,18 +3,15 @@ version: '3'
 services:
   nginx:
     image: nginx:v1.0
-    build:
-      context: .
-      dockerfile: ./requirements/nginx/Dockerfile
     ports:
       - "80:80"
-  mariaDB:
-    image: mariadb:v1.1
     build:
-      context: .
-      dockerfile: ./requirements/mariadb/Dockerfile
+      context: ./requirements/nginx
+  mariadb:
+    image: mariadb:v1.0
+    build:
+      context: ./requirements/mariadb
   wordpress:
-    image: wordpress:v1.2
+    image: wordpress:v1.0
     build:
-      context: .
-      dockerfile: ./requirements/wordpress/Dockerfile
+      context: ./requirements/wordpress

@@ -5,3 +5,6 @@ all :
 
 clean :
 	@docker-compose $(YAML) down
+
+fclean : clean
+	docker rmi $(docker images -q)
