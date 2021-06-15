@@ -9,6 +9,7 @@ RUN	wget https://wordpress.org/latest.tar.gz
 RUN mkdir WordPress
 COPY entrypoint.sh /entrypoint.sh
 COPY wp-config.php /wp-config.php
+COPY www.conf /www.conf
 RUN chmod +x /entrypoint.sh
 RUN mkdir -p /run/php
 

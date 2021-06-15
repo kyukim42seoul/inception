@@ -17,8 +17,8 @@ services:
     image: mariadb:v1.0
     build:
       context: ./requirements/mariadb
-    ports:
-      - "3306:3306"
+    expose:
+      - "3306"
     volumes:
       - ./requirements/mariadb/data:/data
 #    env_file:
@@ -32,8 +32,8 @@ services:
     image: wordpress:v1.0
     build:
       context: ./requirements/wordpress
-    ports:
-      - "9000:9000"
+    expose:
+      - "9000"
 #    env_file:
 #      - wordpress.env
     volumes:
