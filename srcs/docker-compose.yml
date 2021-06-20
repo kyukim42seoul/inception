@@ -3,6 +3,7 @@ version: '3'
 services:
   nginx:
     image: nginx:v1.0
+    container_name: nginx
     ports:
       - "80:80"
       - "443:443"
@@ -15,6 +16,7 @@ services:
 
   mariadb:
     image: mariadb:v1.0
+    container_name: mariadb
     build:
       context: ./requirements/mariadb
     expose:
@@ -30,12 +32,15 @@ services:
     depends_on:
       - mariadb
     image: wordpress:v1.0
+    container_name: wordpress
     build:
       context: ./requirements/wordpress
     expose:
       - "9000"
 #    env_file:
 #      - wordpress.env
+    depends_on:
+      - mariadb
     volumes:
       - ./requirements/wordpress/WordPress:/WordPress
     networks:
