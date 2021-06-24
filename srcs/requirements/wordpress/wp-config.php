@@ -29,7 +29,7 @@ define( 'DB_USER', 'kyukim' );
 define( 'DB_PASSWORD', 'kim13245' );
 
 /** MySQL hostname */
-define( 'DB_HOST', '172.18.0.2:3306' );
+define( 'DB_HOST', 'mariadb:3306' );
 
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );

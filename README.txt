@@ -1,7 +1,13 @@
-TRY
-	match group with nginx / php-fpm
-	match php version
+[Solved]
 
-curl 로 wp-cli core update 할 때 wp-config.php 에 정의된 유저와 비번으로는 리젝트 됨
+wordpress - mariadb connection
 
-mariadb 에서 유저 호스트를 wordpress 혹은 wordperss:9000 으로 바꾸고 권한을 줘 봐도 당장은 안 됨. 추가적인 확인 필요
+	wordpress container -> install php7.3-mysqli && modify php.ini 'extention=mysqli'
+
+	mariadb container -> change host 'localhost' to '%'(maybe or wordpress) && modify my.cnf for bind-address=0.0.0.0(default=127.0.0.1)
+
+[PROBLEM]
+
+db.sql file not applied to mysql by entrypoint.sh;
+
+nginx keep running after 2nd container open because of 'daemon off' timing

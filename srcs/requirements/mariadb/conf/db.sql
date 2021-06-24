@@ -2,11 +2,10 @@ CREATE DATABASE wordpress;
 
 USE mysql;
 
-CREATE user 'kyukim'@'localhost';
-SET PASSWORD FOR 'kyukim'@'localhost' = PASSWORD ('kim13245');
+CREATE user 'kyukim'@'%';
+SET PASSWORD FOR 'kyukim'@'%' = PASSWORD ('kim13245');
+SET PASSWORD FOR 'wp'@'%' = PASSWORD ('kim13245');
 
-GRANT ALL PRIVILEGES ON wordpress.* TO 'kyukim'@'localhost' WITH GRANT OPTION;
-GRANT ALL PRIVILEGES ON phpmyadmin.* TO 'kyukim'@'localhost' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'kyukim'@'%' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON wordpress.* TO 'wp'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
-
-
