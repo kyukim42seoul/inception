@@ -8,8 +8,8 @@ server {
 	error_log /WordPress/localhost.error.log;
 	access_log /WordPress/localhost.access.log;
 
-	autoindex on;
 	index index.nginx-debian.html index.php index.html index.html;
+	autoindex off;
 
 	location / {
 		try_files $uri $uri/ =404;

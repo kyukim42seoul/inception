@@ -1,7 +1,8 @@
 #!/bin/bash
 
 tar -xvf latest.tar.gz
-mv wordpress WordPress
+cp -rp wordpress WordPress
+rm -rf wordpress
 mv wp-config.php /WordPress/wordpress/
 mv www.conf etc/php/7.3/fpm/pool.d/
 mv php.ini /etc/php/7.3/cli/
