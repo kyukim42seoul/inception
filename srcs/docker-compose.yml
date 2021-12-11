@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  nginx:
+    image: ag_nginx:v1.0
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    build:
+      context: ./requirements/nginx
+#    volumes:
+#      - ./requirements/wordpress/WordPress:/WordPress
+    networks:
+      - Agnet1
+
+  mariadb:
+    image: ag_mariadb:v1.0
+    container_name: mariadb
+    build:
+      context: ./requirements/mariadb
+    expose:
+      - "3306"
+#    volumes:
+#      - ./requirements/mariadb/data:/data
+    networks:
+      - Agnet1
+
+  wordpress:
+    depends_on:
+      - mariadb
+    image: ag_wordpress:v1.0
+    container_name: wordpress
+    build:
+      context: ./requirements/wordpress
+    expose:
+      - "9000"
+#    volumes:
+ #     - ./requirements/wordpress/WordPress:/WordPress
+    networks:
+      - Agnet1
+
+networks:
+  Agnet1:
+    driver: bridge
