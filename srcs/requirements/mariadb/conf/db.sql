@@ -3,6 +3,7 @@ CREATE DATABASE wordpress;
 USE mysql;
 
 CREATE user 'kyukim'@'%';
+CREATE user 'wp'@'%';
 SET PASSWORD FOR 'kyukim'@'%' = PASSWORD ('kim13245');
 SET PASSWORD FOR 'wp'@'%' = PASSWORD ('kim13245');
 
