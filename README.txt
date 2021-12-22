@@ -44,6 +44,36 @@ nginx keep running after 2nd container open because of 'daemon off' timing
 
 	문제 2. you have to configure your domain name so it points to your local IP address. PDF 의 이 내용이 kyukim.42.fr 로 127.0.0.1 을 가리켜야만
 	하는 것인지, 혹은 VM 안의 웹사이트 ip 를 가리키면 되는 것인지?
+		가설 1. localhost:443/wordpress && https://localhost/wordpress -> kyukim.42.fr 연결
+
+	문제 3. wordpress 인스톨 페이지를 보면 안 된다. 도커를 세팅한 상황에서 이미 인스톨이 되어 있어야 하고, login 페이지에서 login 해야한다.
+		일단 var/lib/mysql/ 의 파일을 전부 덮어썼을 때, user_name 까지는 존재한다고 인식한다.
+		다만 /WordPress/ 의 파일을 덮어쓰는게 무한 루프처럼 잘 진행되지 않는다.
+
+	문제 4. 80 포트 막기. 오직 443 포트만 사용. (쉬움) v
+
+	문제 5. TLS 1.2/1.3 쓰여야 함. (쉬움) v
+
+	문제 6. docker volume ls 쳤을 때 /home/kyukim/data 가 나오도록 (중간)
+		아아... /home/kyukim/data/DB 혹은 /home/kyukim/data/wordpress 처럼 /home/kyukim/data/ 의 하위경로로 볼륨을 쓰라는 말이구나.
+		docker build -v 옵션으로 설정했을 때 docker volume ls 에 잡힌다.
+		호스트의 볼륨 경로(DB, WordPress)를 우선 만들고 -> 컨테이너의 서비스가 사용하는 디렉토리와 마운트
+		각 서비스(nginx, php-fpm, mariaDB, wordpress)  의 경로 설정은 어디에서?
+			Nginx : etc/nginx/sites-available/default -> root /path
+			mariaDB : my.cnf -> datadir = /path
+		문제 6.1. 볼륨 리스트의 디폴트 경로가 /var/lib/docker 라는데 이걸 어떻게 /home/kyukim/data/ 로 바꾸느냐.
+
+
+	문제 7. wordpress 유저 계정으로 글이 써 지는지? 관리자 계정으로만 어드민 대쉬보드에 접근이 가능한지?
+
+	문제 8. root 에 패스워드 '없이' 데이터베이스 접근 가능하면 안 됨. (쉬움)
+		mysql.user 의 root 가 unix_soket 플러그인을 사용하기 때문에 루트 계정으로 비번 없이 접근할 수 있다.
+		따라서 root 계정의 플러그인과 패스워드를 바꿔줘야 한다.
+		해결 : alter user 'root'@'localhost' identfied by 'kim@13245'; - help:mtak님
+			유저의 비밀번호를 바꿔주며 플러그인도 '' 으로 바꿔준다.
+
+	문제 9. 버추얼 박스를 끄고 다시 켠 뒤에서 웹사이트와 설정이 그대로 남아있나? (중간)
+
 
 
 피드백
@@ -54,3 +84,9 @@ nginx keep running after 2nd container open because of 'daemon off' timing
 	VM 실행 경로를 USB 로 하는 방법
 
 	VM 속도문제 -> CPU 리소스 할당
+
+20211220(월) 18:10 ~
+
+docker, docker-compose 를 루트 권한 없이 열게 하는게 좋을까? 사용자 계정에 루트 권한을 쓰게 해주는게 좋을까?
+
+Wordpress 볼륨을 제대로 데이터가 남아있는 것 같은데 mariaDB 는 경로를 바꿔줘야 하는걸까?
