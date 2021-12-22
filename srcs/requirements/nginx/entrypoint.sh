@@ -1,5 +1,6 @@
 #!/bin/bash
 
+chown -R www-data:www-data /var/www/wordpress
 openssl req -newkey rsa:4096 -days 365 -nodes -x509 -subj "/C=KR/ST=Seoul/L=Seoul/0=42Seoul/OU=Kyukim/CN=localhost" -keyout localhost.dev.key -out localhost.dev.crt
 
 mv localhost.dev.crt etc/ssl/certs/

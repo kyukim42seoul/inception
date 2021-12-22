@@ -10,8 +10,7 @@ services:
       context: ./requirements/nginx
     volumes:
       - WordPress:/var/www/wordpress
-    restart:
-      - on-failure
+    restart: on-failure
     networks:
       - Br1
 
@@ -24,8 +23,7 @@ services:
       - "3306"
     volumes:
       - DB:/var/lib/mysql
-    restart:
-      - on-failure
+    restart: on-failure
 #    env_file:
 #      - mariadb.env
     networks:
@@ -42,12 +40,9 @@ services:
       - "9000"
     env_file:
       - wp.env
-#    depends_on:
-#      - mariadb
     volumes:
       - WordPress:/var/www/wordpress
-    restart:
-      - on-failure
+    restart: on-failure
     networks:
       - Br1
 
@@ -61,11 +56,11 @@ volumes:
         driver_opts:
             type: 'none'
             o: 'bind'
-            device: '/home/kyukim/data/WordPress'
+            device: '/Users/baramjigi2/project/42cursus/kyukim_inception/WordPress'
     DB:
         driver: local
         driver_opts:
             type: 'none'
             o: 'bind'
-            device: '/home/kyukim/data/DB'
+            device: '/Users/baramjigi2/project/42cursus/kyukim_inception/DB'
   
