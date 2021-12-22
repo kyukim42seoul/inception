@@ -56,11 +56,11 @@ volumes:
         driver_opts:
             type: 'none'
             o: 'bind'
-            device: '/Users/baramjigi2/project/42cursus/kyukim_inception/WordPress'
+            device: '/home/kyukim/data/WordPress'
     DB:
         driver: local
         driver_opts:
             type: 'none'
             o: 'bind'
-            device: '/Users/baramjigi2/project/42cursus/kyukim_inception/DB'
+            device: '/home/kyukim/data/DB'
   
