@@ -7,7 +7,7 @@ RUN	apt-get install -y curl
 RUN	apt-get install -y php-fpm
 RUN	apt-get install -y php7.3-mysqli
 COPY entrypoint.sh /entrypoint.sh
-#COPY wp-config.php /wp-config.php
+COPY wp-config.php /wp-config.php
 #COPY WordPress/php.ini /php.ini
 COPY www.conf /www.conf
 RUN chmod +x /entrypoint.sh

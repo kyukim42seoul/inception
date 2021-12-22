@@ -8,15 +8,9 @@ mv wp-cli.phar /usr/local/bin/wp
 FILE=/var/www/wordpress/wp-config.php 
 if [ ! -f "$FILE" ]; then
 	mkdir -p /var/www/wordpress
+	mv wp-config.php /var/www/wordpress
 	wp cli update
    	wp core download --allow-root --path='/var/www/wordpress'
-	wp core config \
-		--allow-root \
-		--dbname=$DB_NAME \
-		--dbuser=$DB_LOGIN \
-		--dbpass=$DB_PASS \
-		--dbhost=mariadb:3306 \
-		--path='/var/www/wordpress'
 
 	wp core install \
 		--allow-root \
