@@ -29,8 +29,7 @@ if [ ! -f "$FILE" ]; then
 		--user_pass=$WP_USERPASS \
 		--role=author
 fi
-php-fpm7.3 --nodaemonize
 
 mv www.conf etc/php/7.3/fpm/pool.d/
 chown -R www-data:www-data /var/www/wordpress
-php-fpm7.3
+php-fpm7.3 --nodaemonize
