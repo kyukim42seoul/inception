@@ -6,7 +6,7 @@ chmod +x wp-cli.phar
 mv wp-cli.phar /usr/local/bin/wp
 
 FILE=/var/www/wordpress/wp-config.php 
-if [ ! -f "$FILE" ]; then
+if [ ! -e "$FILE" ]; then
 	mkdir -p /var/www/wordpress
 	mv wp-config.php /var/www/wordpress
 	wp cli update
