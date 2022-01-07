@@ -17,6 +17,6 @@ clean :
 	@docker-compose $(YAML) down
 
 fclean :
+	@docker-compose $(YAML) down --rmi all
 	@docker volume rm srcs_DB
 	@docker volume rm srcs_WordPress
-	@docker-compose $(YAML) down --rmi all
