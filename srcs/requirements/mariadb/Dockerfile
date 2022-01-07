@@ -11,6 +11,5 @@ COPY data/db.sql /db.sql
 COPY conf/mariadb.cnf /mariadb.cnf
 COPY conf/my.cnf /my.cnf
 RUN chmod +x /entrypoint.sh
-RUN mkdir data
 
 ENTRYPOINT [ "/entrypoint.sh" ]
