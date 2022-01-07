@@ -24,8 +24,6 @@ services:
     volumes:
       - DB:/var/lib/mysql/
     restart: on-failure
-#    env_file:
-#      - mariadb.env
     networks:
       - Br1
 
