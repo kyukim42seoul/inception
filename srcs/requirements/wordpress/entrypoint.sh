@@ -1,12 +1,5 @@
 #!/bin/bash
 
-<<<<<<< HEAD
-tar -xvf latest.tar.gz
-cp -rp wordpress WordPress
-rm -rf wordpress
-mv wp-config.php /WordPress/wordpress/
-=======
->>>>>>> test
 mv www.conf etc/php/7.3/fpm/pool.d/
 FILE=/var/www/wordpress/wp-config.php 
 if [ ! -e "$FILE" ]; then
