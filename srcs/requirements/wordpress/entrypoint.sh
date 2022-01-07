@@ -1,5 +1,6 @@
 #!/bin/bash
 
+mv www.conf etc/php/7.3/fpm/pool.d/
 FILE=/var/www/wordpress/wp-config.php 
 if [ ! -e "$FILE" ]; then
 	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
@@ -27,7 +28,6 @@ if [ ! -e "$FILE" ]; then
 		irrelevant@email.com \
 		--user_pass=$WP_USERPASS \
 		--role=author
-	mv www.conf etc/php/7.3/fpm/pool.d/
 	chown -R www-data:www-data /var/www/wordpress
 fi
 php-fpm7.3 --nodaemonize
