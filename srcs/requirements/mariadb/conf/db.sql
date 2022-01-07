@@ -1,4 +1,7 @@
-CREATE DATABASE wordpress;
+IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'wordpress')
+	BEGIN
+	CREATE DATABASE wordpress;
+	END
 
 USE mysql;
 
