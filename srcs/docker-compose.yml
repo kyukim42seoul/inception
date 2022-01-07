@@ -22,7 +22,7 @@ services:
     expose:
       - "3306"
     volumes:
-      - DB:/var/lib/mysql
+      - DB:/var/lib/mysql/wordpress
     restart: on-failure
 #    env_file:
 #      - mariadb.env
@@ -62,5 +62,5 @@ volumes:
         driver_opts:
             type: 'none'
             o: 'bind'
-            device: '/home/kyukim/data/DB'
+            device: '/home/kyukim/data/wp_DB'
   
