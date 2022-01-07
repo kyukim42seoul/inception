@@ -10,7 +10,8 @@ services:
       context: ./requirements/nginx
     volumes:
       - WordPress:/var/www/wordpress
-    restart: on-failure
+    restart:
+      - on-failure
     networks:
       - Br1
 
@@ -22,8 +23,9 @@ services:
     expose:
       - "3306"
     volumes:
-      - DB:/var/lib/mysql/
-    restart: on-failure
+      - DB:/var/lib/mysql
+    restart:
+      - on-failure
 #    env_file:
 #      - mariadb.env
     networks:
@@ -40,9 +42,12 @@ services:
       - "9000"
     env_file:
       - wp.env
+#    depends_on:
+#      - mariadb
     volumes:
       - WordPress:/var/www/wordpress
-    restart: on-failure
+    restart:
+      - on-failure
     networks:
       - Br1
 
