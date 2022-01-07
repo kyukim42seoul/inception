@@ -90,3 +90,7 @@ nginx keep running after 2nd container open because of 'daemon off' timing
 docker, docker-compose 를 루트 권한 없이 열게 하는게 좋을까? 사용자 계정에 루트 권한을 쓰게 해주는게 좋을까?
 
 Wordpress 볼륨을 제대로 데이터가 남아있는 것 같은데 mariaDB 는 경로를 바꿔줘야 하는걸까?
+
+20210104(화) 23:38 ~
+	도메인 바꾸기를 제외하곤 모두 완성한 상태로 버추얼박스에 넘기자
+	루트경로, 볼륨 관리를 가능하면 환경변수로 처리하자. 뚝딱 바꿀 수 있게.
