@@ -107,3 +107,4 @@ Wordpress 볼륨을 제대로 데이터가 남아있는 것 같은데 mariaDB �
 		/home/kyukim/data/DB, /home/kyukim/data/WordPress 경로 만드는 것 Makefile 에 포함
 			해당 경로에 폴더가 존재하는지 확인 할 방법을 찾지 못해 보류
 				.sh 안의 if 문이 Makefile 에서 생략된다.
+		mysqld_safe --skip-grant-tables 찾아보자
