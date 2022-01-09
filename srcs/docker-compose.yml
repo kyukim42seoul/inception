@@ -21,7 +21,9 @@ services:
       context: ./requirements/mariadb
     expose:
       - "3306"
-    volumes:
+    env_file:
+      - mariadb.env
+      volumes:
       - DB:/var/lib/mysql/
     restart: on-failure
     networks:
