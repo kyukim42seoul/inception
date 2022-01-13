@@ -6,5 +6,5 @@ if [ ! -e "$DB" ]; then
 	mkdir -p /home/kyukim/data/DB
 fi
 if [ ! -e "$WP" ]; then
-	mkdir 0p /home/kyukim/data/WordPress
+	mkdir -p /home/kyukim/data/WordPress
 fi
