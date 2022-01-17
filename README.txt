@@ -117,5 +117,9 @@ Wordpress 볼륨을 제대로 데이터가 남아있는 것 같은데 mariaDB �
 20210109(일) 15:53 ~
 	mariadb.env 로 이제 돌긴 하는데 mariadb 컨테이너가 멈추는건 여전하다.
 		mariadb_error.log 에 root@localhost access denied 가 계속 쌓인다.
-		
+
+
+20210117(월) 19:55 ~
+	왜 wp user create 가 안 먹히지...?
+		그대로 커맨드 치면 들어가는데...
 	
