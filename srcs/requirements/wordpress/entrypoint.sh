@@ -8,9 +8,18 @@ if [ ! -e "$FILE" ]; then
 	chmod +x wp-cli.phar
 	mv wp-cli.phar /usr/local/bin/wp
 	mkdir -p /var/www/wordpress
+	chown -R www-data:www-data /var/www/wordpress
 	mv wp-config.php /var/www/wordpress
 	wp cli update
    	wp core download --allow-root --path='/var/www/wordpress'
+
+	wp core config \
+		--allow-root \
+		--dbname=$DB_NAME \
+		--dbuser=$DB_LOGIN \
+		--dbpass=$DB_PASS \
+		--dbhost=mariadb:3306 \
+		--path='/var/www/wordpress'
 
 	wp core install \
 		--allow-root \
@@ -28,6 +37,6 @@ if [ ! -e "$FILE" ]; then
 		irrelevant@email.com \
 		--user_pass=$WP_USERPASS \
 		--role=author
-	chown -R www-data:www-data /var/www/wordpress
+		--path='/var/www/wordpress'
 fi
 php-fpm7.3 --nodaemonize

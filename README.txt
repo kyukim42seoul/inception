@@ -113,4 +113,9 @@ Wordpress 볼륨을 제대로 데이터가 남아있는 것 같은데 mariaDB �
 	db.sql 에서 alter user ... 으로 mysql 접근 차단 재현 성공
 		그런데 웹페이지가 뜬다...?
 		mariadb 컨테이너는 자꾸 멈추는데...?
+
+20210109(일) 15:53 ~
+	mariadb.env 로 이제 돌긴 하는데 mariadb 컨테이너가 멈추는건 여전하다.
+		mariadb_error.log 에 root@localhost access denied 가 계속 쌓인다.
+		
 	
