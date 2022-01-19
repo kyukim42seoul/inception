@@ -5,12 +5,15 @@ all :
 	@docker-compose $(YAML) up --build -d
 
 nginx :
+	@./srcs/makedir.sh
 	@docker-compose $(YAML) up --build -d nginx
 
 mariadb :
+	@./srcs/makedir.sh
 	@docker-compose $(YAML) up --build -d mariadb
 
 wordpress :
+	@./srcs/makedir.sh
 	@docker-compose $(YAML) up --build -d wordpress
 
 clean :

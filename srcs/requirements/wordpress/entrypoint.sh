@@ -38,7 +38,5 @@ if [ ! -e "$FILE" ]; then
 		--user_pass=$WP_USERPASS \
 		--role=author \
 		--path='/var/www/wordpress'
-
-		touch test.txt
 fi
 php-fpm7.3 --nodaemonize

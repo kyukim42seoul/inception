@@ -10,4 +10,5 @@ SET PASSWORD FOR 'wp'@'%' = PASSWORD ('kim13245');
 GRANT ALL PRIVILEGES ON *.* TO 'kyukim'@'%' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON wordpress.* TO 'wp'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
-/*alter user 'root'@'localhost' identified by 'root';*/
+alter user 'root'@'localhost' identified by 'root';
+--한 줄 주석
