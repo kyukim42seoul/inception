@@ -1,6 +1,7 @@
 YAML = -f srcs/docker-compose.yml
 
 all :
+	@cp -rp srcs/hosts /etc
 	@./srcs/makedir.sh
 	@docker-compose $(YAML) up --build -d
 
@@ -21,5 +22,4 @@ clean :
 
 fclean :
 	@docker-compose $(YAML) down --rmi all
-	@docker volume rm srcs_DB
-	@docker volume rm srcs_WordPress
+	@docker volume rm srcs_DB srcs_WordPress
