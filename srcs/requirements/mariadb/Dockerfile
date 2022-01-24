@@ -10,6 +10,7 @@ COPY entrypoint.sh /entrypoint.sh
 COPY data/db.sql /db.sql
 COPY conf/mariadb.cnf /mariadb.cnf
 COPY conf/my.cnf /my.cnf
+COPY conf/debian.cnf /debian.cnf
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT [ "/entrypoint.sh" ]
