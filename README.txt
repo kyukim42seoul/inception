@@ -132,3 +132,16 @@ Wordpress 볼륨을 제대로 데이터가 남아있는 것 같은데 mariaDB �
 	남은 문제
 		볼륨을 제외한 도커를 다 날리고 VM 을 끈 뒤, 다시 들어가서 클론받고 make 했을 때, DB 접근이 막힌다.
 		hosts 파일 수정 자동화
+
+20210122(토) 18:03
+	make -> make fclean -> make 하면 다시 root@localhost 가 거절된다.
+		alter ... 구문 주석처리 했지만 해결 x
+		db.sql 을 지운다면?
+			아예 DB 자체가 안 돌아간다.
+		가설 1. mysql 이 이미 데이터가 존재하는 볼륨을 썼을 때, 환경변수가 초기화되지 않는다.
+			확인 : 들어갔는데...?? -> echo $MYSQL_ROOT_PASSWORD : root
+		가설 2. root 계정 비번, 플러그인 세팅이 안 됐나?
+			확인 : 됐는데?? -> mysql_native_password
+		의문 : 왜 처음엔 거절당하지 않는데 2번째 부터 거절당하나?
+		MYSQL_PWD=root 처럼 비밀번호를 환경변수로 줘 버리면 기껏 막아 둔 mysql 로그인이 뚫린다.
+		

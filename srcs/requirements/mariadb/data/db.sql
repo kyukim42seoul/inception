@@ -12,4 +12,3 @@ GRANT ALL PRIVILEGES ON wordpress.* TO 'wp'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 ALTER USER root@localhost IDENTIFIED VIA mysql_native_password;
 SET PASSWORD = PASSWORD('root');
---한 줄 주석
