@@ -145,3 +145,25 @@ Wordpress 볼륨을 제대로 데이터가 남아있는 것 같은데 mariaDB �
 		의문 : 왜 처음엔 거절당하지 않는데 2번째 부터 거절당하나?
 		MYSQL_PWD=root 처럼 비밀번호를 환경변수로 줘 버리면 기껏 막아 둔 mysql 로그인이 뚫린다.
 		
+20210124(월) 16:04 ~
+	오늘 찾아야 할 원인 : make -> fclaen -> make 했을 때의 root@localhost 에 대한 접근 거부
+		시도 1. db.sql 에서 alter ... 구문 삭제
+		시도 2. entrypoint.sh 에서 mysql < db.sql 삭제 x
+		현황 1. root@localhost 의 비밀번호와 플러그인은 유지 o
+		현황 2. MYSQL_ROOT_PASSWORD 계정의 비밀번호와 일치 o
+		시도 3. using password 를 YES 로 변경
+		시도 4. my.cnf 에 [client] 에 패스워드 전달 x
+			이렇게 전달하면 mysql 로 바로 데이터베이스 접속 가능해짐
+		시도 5. mariaDB 에서 사용하는 환경변수로 루트 경로 지정해주기
+			MYSQL_HOME 세팅 x
+			PATH 세팅
+		시도 6. /etc/mysql/debian.cnf 파일 [mysql_upgrade] 에 암호 넣어보기 x
+		시도 7. /etc/mysql/debian.cnf 파일 [client] 에 암호 넣어보기 o
+			드디어 성공했다 미친....ㅠㅠㅠㅠ
+
+20210125(화) 15:49
+	파일 정리
+	개념 공부
+		docker-compose
+		php-fpm
+		mariaDB
