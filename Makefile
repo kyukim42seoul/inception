@@ -6,7 +6,7 @@
 #    By: kyukim <kyukim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/25 16:43:01 by kyukim            #+#    #+#              #
-#    Updated: 2022/01/25 16:59:06 by kyukim           ###   ########.fr        #
+#    Updated: 2022/01/25 17:09:16 by kyukim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,4 +23,3 @@ clean :
 fclean :
 	@docker-compose $(YAML) down --rmi all
 	@docker volume rm srcs_DB srcs_WordPress
-	@docker network rm srcs_Br1

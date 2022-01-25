@@ -9,17 +9,9 @@ if [ ! -e "$FILE" ]; then
 	mv wp-cli.phar /usr/local/bin/wp
 	mkdir -p /var/www/wordpress
 	chown -R www-data:www-data /var/www/wordpress
-#	mv wp-config.php /var/www/wordpress
+	mv wp-config.php /var/www/wordpress
 	wp cli update
-   	wp core download --allow-root --path='/var/www/wordpress'
-
-	wp core config \
-		--allow-root \
-		--dbname=$DB_NAME \
-		--dbuser=$DB_LOGIN \
-		--dbpass=$DB_PASS \
-		--dbhost=mariadb:3306 \
-		--path='/var/www/wordpress'
+	wp core download --allow-root --path='/var/www/wordpress'
 
 	wp core install \
 		--allow-root \

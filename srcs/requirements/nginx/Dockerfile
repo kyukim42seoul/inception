@@ -6,6 +6,7 @@ RUN apt-get install -y vim
 RUN apt-get install -y openssl
 RUN apt-get install -y nginx
 RUN apt-get install openssl
+RUN apt-get install dialog apt-utils
 COPY entrypoint.sh /entrypoint.sh
 COPY conf/default /default
 RUN chmod +x /entrypoint.sh

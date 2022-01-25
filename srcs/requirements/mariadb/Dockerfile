@@ -6,6 +6,7 @@ RUN apt-get install -y vim
 RUN	apt-get	install -y mariadb-server
 RUN apt-get	install -y mariadb-client
 RUN	apt-get install -y php-mysql
+RUN apt-get install dialog apt-utils
 COPY entrypoint.sh /entrypoint.sh
 COPY data/db.sql /db.sql
 COPY conf/mariadb.cnf /mariadb.cnf
