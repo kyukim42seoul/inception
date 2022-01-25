@@ -12,5 +12,4 @@ COPY conf/www.conf /www.conf
 RUN chmod +x /entrypoint.sh
 RUN mkdir -p /run/php
 
-
 ENTRYPOINT [ "/entrypoint.sh"]

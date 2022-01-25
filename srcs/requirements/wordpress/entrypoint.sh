@@ -9,7 +9,7 @@ if [ ! -e "$FILE" ]; then
 	mv wp-cli.phar /usr/local/bin/wp
 	mkdir -p /var/www/wordpress
 	chown -R www-data:www-data /var/www/wordpress
-	mv wp-config.php /var/www/wordpress
+#	mv wp-config.php /var/www/wordpress
 	wp cli update
    	wp core download --allow-root --path='/var/www/wordpress'
 
