@@ -1,5 +1,6 @@
-[need update]
+[Need Update]
 change run mysqld to mysqld_safe
+use .env variables to .sql
 
 [Solved]
 
