@@ -1,3 +1,6 @@
+[need update]
+change run mysqld to mysqld_safe
+
 [Solved]
 
 wordpress - mariadb connection
